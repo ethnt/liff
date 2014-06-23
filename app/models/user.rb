@@ -32,4 +32,17 @@ class User
   def self.columns
     self.fields.collect { |c| c[1] }
   end
+
+  has_many :services
+  has_many :reports
+
+  def reports_for_date(date = Date.today)
+    self.reports.where(date: date)
+  end
+
+  def refresh!
+    self.services.each do |service|
+      service.refresh!
+    end
+  end
 end
