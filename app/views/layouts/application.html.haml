@@ -1,0 +1,27 @@
+!!!
+%html{class: Rails.env, lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+
+    %title Liff
+
+    %meta{content: "Liff", name: "description"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+
+    = stylesheet_link_tag "application"
+
+    %script{src: "//use.typekit.net/sye3zat.js"}
+    :javascript
+      try {
+        Typekit.load();
+      } catch(e) {}
+  %body
+    %header#header{role: "banner"}
+      %h1= link_to "Ethan Turkeltaub", ""
+
+    %main{role: "main"}
+      = yield
+
+
+    = javascript_include_tag "application"

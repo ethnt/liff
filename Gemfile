@@ -10,8 +10,20 @@ gem 'turbolinks'
 
 gem 'devise'
 
+gem 'faraday'
+gem 'oj'
+
+gem 'chronic_duration'
+
+gem 'jawbone'
+gem 'foursquare2'
+gem 'strava-api-v3'
+
+gem 'haml-rails'
+
 gem 'sass-rails'
 gem 'compass-rails'
+gem 'susy'
 
 gem 'jquery-rails'
 
@@ -20,11 +32,18 @@ group :assets do
   gem 'coffee-rails'
 end
 
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
 group :development do
   gem 'foreman'
+  gem 'pry-rails'
 
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem 'log_buddy'
 
   gem 'spring'
 end

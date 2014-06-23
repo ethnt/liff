@@ -1,0 +1,27 @@
+%header
+  %h2= "Reports for #{@view_date}"
+  %nav
+    %ul
+      %li
+        - if @nav[:prev]
+          = link_to @nav[:prev], user_path(username: @view_user.username, year: @nav[:prev].year, month: @nav[:prev].month, day: @nav[:prev].day)
+      %li
+        - if @nav[:next]
+          = link_to @nav[:next], user_path(username: @view_user.username, year: @nav[:next].year, month: @nav[:next].month, day: @nav[:next].day)
+%section
+  - @reports.each do |report|
+    - case report._type
+      - when 'JawboneUpReport'
+        = render :partial => 'reports/jawbone', locals: { report: report }
+      - when 'FoursquareReport'
+        = render :partial => 'reports/foursquare', locals: { report: report }
+%footer
+  - if @view_user.services.where('_type' => 'JawboneUpService').first == nil
+    = link_to "Connect Jawbone UP", service_link_path(service: 'jawbone')
+  - else
+    Jawbone connected
+
+  - if @view_user.services.where('_type' => 'FoursquareService').first == nil
+    = link_to "Connect Foursquare", service_link_path(service: 'foursquare')
+  - else
+    Foursquare connected

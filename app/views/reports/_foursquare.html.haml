@@ -1,0 +1,4 @@
+%article.foursquare
+  %ul
+    - report.checkins.each do |checkin|
+      %li= "Checked in at #{checkin['venue']['name']} at #{Time.at(checkin['createdAt'])}"

@@ -12,16 +12,19 @@ Bundler.require(*Rails.groups)
 
 module Liff
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.assets.paths << "#{Rails.root}/app/assets/css"
+    config.assets.paths << "#{Rails.root}/app/assets/img"
+    config.assets.paths << "#{Rails.root}/app/assets/jsc"
+    config.assets.paths << "#{Rails.root}/app/assets/webfonts"
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
+    config.compass.require 'susy'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.paths.add 'app/models/services', glob: '*.rb'
+    config.autoload_paths += Dir["#{Rails.root}/app/models/services"]
+    config.paths.add 'app/models/reports', glob: '*.rb'
+    config.autoload_paths += Dir["#{Rails.root}/app/models/reports"]
+    config.encoding = 'utf-8'
+
+    config.action_controller.include_all_helpers = true
   end
 end
