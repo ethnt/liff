@@ -3,7 +3,7 @@ class StravaService < Service
 
   class << self
     def link
-      "https://www.strava.com/oauth/authorize?client_id=#{ENV['STRAVA_CLIENT_ID']}&redirect_uri=#{ENV['STRAVA_REDIRECT_URI']}&response_type=code&approval_prompt=force"
+      "https://www.strava.com/oauth/authorize?client_id=#{ENV['STRAVA_CLIENT_ID']}&response_type=code&approval_prompt=force&redirect_uri=#{ENV['STRAVA_REDIRECT_URI']}"
     end
 
     def create_with_code(code, user)

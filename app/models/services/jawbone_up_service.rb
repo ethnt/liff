@@ -52,14 +52,16 @@ class JawboneUpService < Service
 
       existing_report = self.reports.where(date: date).first
 
+      time = day['details']['duration'] - day['details']['awake']
+
       if existing_report
-        if day['details']['duration'] != existing_report.sleep
-          existing_report.sleep = day['details']['duration']
+        if existing_report.sleep != time
+          existing_report.sleep = time
           existing_report.save
         end
       else
         new_report = JawboneUpReport.new(
-          sleep: day['details']['duration'],
+          sleep: time,
           date: date
         )
 

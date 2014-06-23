@@ -11,7 +11,10 @@ class ServicesController < ApplicationController
     service = current_service.create_with_code(params[:code], User.first)
     service.refresh!
 
-    redirect_to root_path
+    redirect_to account_path
+  end
+
+  def destroy
   end
 
   private

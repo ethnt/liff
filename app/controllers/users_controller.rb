@@ -26,6 +26,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def refresh
+    user = User.find(params[:id])
+    user.refresh!
+
+    redirect_to params[:redirect_to]
+  end
+
   private
 
   def view_user

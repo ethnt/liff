@@ -28,3 +28,19 @@
 %p
   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 = link_to "Back", :back
+
+%ul
+  - if current_user.services.where('_type' => 'JawboneUpService').first == nil
+    %li= link_to "Connect Jawbone UP", service_link_path(service: 'jawbone')
+  - else
+    %li Jawbone connected
+
+  - if current_user.services.where('_type' => 'FoursquareService').first == nil
+    %li= link_to "Connect Foursquare", service_link_path(service: 'foursquare')
+  - else
+    %li Foursquare connected
+
+  - if current_user.services.where('_type' => 'StravaService').first == nil
+    %li= link_to "Connect Strava", service_link_path(service: 'strava')
+  - else
+    %li Strava connected

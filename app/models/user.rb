@@ -36,6 +36,13 @@ class User
   has_many :services
   has_many :reports
 
+  class << self
+    def serialize_from_session(key, salt)
+      record = to_adapter.get(key[0]["$oid"])
+      record if record && record.authenticatable_salt == salt
+    end
+  end
+
   def reports_for_date(date = Date.today)
     self.reports.where(date: date)
   end
