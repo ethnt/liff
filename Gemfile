@@ -18,7 +18,10 @@ gem 'puma'
 
 gem 'haml'
 
-gem 'sprockets', github: 'sstephenson/sprockets'
+# 4b26da923aadc880f7a23e592c5a2930fd976bc5 in sprockets introduces a bug
+# here: https://github.com/sstephenson/sprockets/blob/4b26da923aadc880f7a23e592c5a2930fd976bc5/lib/sprockets/path_utils.rb#L30
+# that breaks things. This references the parent commit, where this is not broken.
+gem 'sprockets', github: 'sstephenson/sprockets', ref: '6f52ee9d1dede15903fcc016c2eab426afcab1e8'
 gem 'sprockets-sass'#, github: 'petebrowne/sprockets-sass'
 gem 'sprockets-helpers'
 gem 'compass'

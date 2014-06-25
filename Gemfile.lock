@@ -54,9 +54,11 @@ GIT
 
 GIT
   remote: git://github.com/sstephenson/sprockets.git
-  revision: 444eff0965efd4dfec048876a9adb23b8ea302ec
+  revision: 6f52ee9d1dede15903fcc016c2eab426afcab1e8
+  ref: 6f52ee9d1dede15903fcc016c2eab426afcab1e8
   specs:
     sprockets (2.12.1)
+      hike (~> 2.1)
       rack (~> 1.0)
 
 GEM
@@ -82,6 +84,7 @@ GEM
     fssm (0.2.10)
     haml (4.0.5)
       tilt
+    hike (2.1.3)
     http_router (0.11.1)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)

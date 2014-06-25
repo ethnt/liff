@@ -11,10 +11,10 @@ use Rack::Reloader
 
 Compass.configuration do |c|
   c.preferred_syntax = :scss
-  c.http_path = '/'
-  c.relative_assets = true
-  c.line_comments = true
-  c.output_style = :compressed
+  c.http_path        = '/'
+  c.relative_assets  = true
+  c.line_comments    = true
+  c.output_style     = :expanded
 end
 
 map '/assets' do
